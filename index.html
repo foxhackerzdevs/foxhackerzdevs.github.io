@@ -2,65 +2,161 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fox Hackerz</title>
+  <title>Fox Hackerz | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       background: #0d1117;
       color: #c9d1d9;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+      margin: 0;
+      padding: 0;
     }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
     h1 {
       color: #58a6ff;
+      margin-bottom: 10px;
     }
+
+    h2 {
+      margin-top: 50px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 5px;
+    }
+
+    p {
+      color: #8b949e;
+    }
+
     a {
       color: #58a6ff;
       text-decoration: none;
     }
+
+    .tagline {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
     .card {
       border: 1px solid #30363d;
       padding: 20px;
-      margin: 15px auto;
-      width: 300px;
-      border-radius: 10px;
+      border-radius: 12px;
+      text-align: left;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: #58a6ff;
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #58a6ff;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #8b949e;
     }
   </style>
 </head>
+
 <body>
 
-<h1>🦊 Fox Hackerz</h1>
-<p><b>Cybersecurity • Automation • Developer Tools</b></p>
-<p>Build. Break. Secure.</p>
+<div class="container">
 
-<h2>Projects</h2>
+  <!-- HEADER -->
+  <h1>🦊 Fox Hackerz</h1>
+  <p class="tagline"><b>Cybersecurity • Automation • Developer Tools</b></p>
+  <p>Build. Break. Secure.</p>
 
-<div class="card">
-  <h3>FoxScan</h3>
-  <p>Recon tool for port scanning & headers</p>
-  <a href="https://github.com/foxhackerzdevs/FoxScan">View</a>
+  <!-- ABOUT -->
+  <div class="section">
+    <h2>About</h2>
+    <p>
+      I build practical tools focused on cybersecurity, automation, and system-level problem solving.
+      My work emphasizes simplicity, reliability, and real-world usability.
+    </p>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <h2>Projects</h2>
+
+    <div class="projects">
+
+      <div class="card">
+        <h3>FoxScan</h3>
+        <p>Reconnaissance tool for port scanning and HTTP header analysis.</p>
+        <a href="https://github.com/foxhackerzdevs/FoxScan">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Cryptify</h3>
+        <p>Multi-layered security tool for file encryption and system protection.</p>
+        <a href="https://github.com/foxhackerzdevs/Cryptify">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>pinlock-img</h3>
+        <p>Authenticated PNG vault using Encrypt-then-MAC design.</p>
+        <a href="https://github.com/foxhackerzdevs/pinlock-img">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>sshm</h3>
+        <p>CLI tool to instantly connect to SSH hosts from config.</p>
+        <a href="https://github.com/foxhackerzdevs/sshm">View Project →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <h2>Skills</h2>
+    <p>
+      Python • C++ • Bash • Cybersecurity • Automation • CLI Tools • Systems Programming
+    </p>
+  </div>
+
+  <!-- LINKS -->
+  <div class="section">
+    <h2>Links</h2>
+    <p>
+      🔗 <a href="https://github.com/foxhackerzdevs">Fox Hackerz</a><br>
+      🔗 <a href="https://github.com/Abhrankan-Chakrabarti">Personal GitHub</a>
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🦊 Join the pack. Build. Break. Secure.</p>
+  </div>
+
 </div>
-
-<div class="card">
-  <h3>Cryptify</h3>
-  <p>File & system security tool</p>
-  <a href="https://github.com/foxhackerzdevs/Cryptify">View</a>
-</div>
-
-<div class="card">
-  <h3>pinlock-img</h3>
-  <p>Authenticated PNG vault</p>
-  <a href="https://github.com/foxhackerzdevs/pinlock-img">View</a>
-</div>
-
-<div class="card">
-  <h3>sshm</h3>
-  <p>Fast SSH CLI tool</p>
-  <a href="https://github.com/foxhackerzdevs/sshm">View</a>
-</div>
-
-<p><br>🔗 <a href="https://github.com/foxhackerzdevs">GitHub</a></p>
 
 </body>
 </html>
