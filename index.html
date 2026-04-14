@@ -80,6 +80,7 @@
     .card:hover {
       border-color: #58a6ff;
       transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(88,166,255,0.2);
     }
 
     .card h3 {
@@ -108,7 +109,7 @@
       color: #8b949e;
     }
 
-    /* TERMINAL BOX */
+    /* TERMINAL */
     .terminal {
       background: #010409;
       border: 1px solid #30363d;
@@ -117,6 +118,17 @@
       font-family: monospace;
       margin-top: 20px;
       color: #58a6ff;
+      min-height: 80px;
+    }
+
+    /* TYPING EFFECT */
+    .typing::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
     }
   </style>
 </head>
@@ -138,15 +150,12 @@
   <h2>About</h2>
   <p>
     I build practical cybersecurity and automation tools focused on real-world usage.
-    My work emphasizes clean design, performance, and simplicity over unnecessary complexity.
+    My work emphasizes clean design, performance, and simplicity.
   </p>
 
-  <!-- TERMINAL DEMO -->
+  <!-- TERMINAL -->
   <div class="terminal">
-    $ foxscan example.com<br>
-    → Open ports detected<br>
-    → Headers analyzed<br>
-    → Potential vulnerabilities flagged
+    <span id="terminal-text" class="typing"></span>
   </div>
 
   <!-- PROJECTS -->
@@ -157,28 +166,28 @@
     <div class="card">
       <h3>FoxScan</h3>
       <p>Recon tool for port scanning and HTTP header analysis.</p>
-      <p class="impact">⚡ Fast scanning + security insights in seconds</p>
+      <p class="impact">⚡ Fast scanning + vulnerability hints</p>
       <a href="https://github.com/foxhackerzdevs/FoxScan">View →</a>
     </div>
 
     <div class="card">
       <h3>Cryptify</h3>
-      <p>Multi-layered file and system security tool.</p>
-      <p class="impact">🔐 Combines encryption + system-level protection</p>
+      <p>File and system security tool.</p>
+      <p class="impact">🔐 Encryption + system-level protection</p>
       <a href="https://github.com/foxhackerzdevs/Cryptify">View →</a>
     </div>
 
     <div class="card">
       <h3>pinlock-img</h3>
-      <p>Authenticated PNG vault with Encrypt-then-MAC design.</p>
-      <p class="impact">🛡 Prevents corruption & tampering</p>
+      <p>Authenticated PNG vault.</p>
+      <p class="impact">🛡 Prevents tampering & corruption</p>
       <a href="https://github.com/foxhackerzdevs/pinlock-img">View →</a>
     </div>
 
     <div class="card">
       <h3>sshm</h3>
-      <p>Fast CLI tool for SSH connections.</p>
-      <p class="impact">⚡ Connect instantly without remembering commands</p>
+      <p>Fast SSH CLI tool.</p>
+      <p class="impact">⚡ Instant SSH access</p>
       <a href="https://github.com/foxhackerzdevs/sshm">View →</a>
     </div>
 
@@ -193,7 +202,6 @@
     <span>Cybersecurity</span>
     <span>Automation</span>
     <span>CLI Tools</span>
-    <span>Systems Programming</span>
   </div>
 
   <!-- CONTACT -->
@@ -209,6 +217,21 @@
   </div>
 
 </div>
+
+<script>
+  const text = "$ foxscan example.com\n→ Open ports detected\n→ Headers analyzed\n→ Potential issues flagged";
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      document.getElementById("terminal-text").innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+      i++;
+      setTimeout(type, 25);
+    }
+  }
+
+  type();
+</script>
 
 </body>
 </html>
