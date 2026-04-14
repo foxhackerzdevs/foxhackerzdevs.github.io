@@ -68,24 +68,36 @@
         gap: 20px;
       }
 
-      .projects a {
+      .project-card {
         display: block;
+        border: 1px solid #30363d;
+        border-radius: 12px;
+        padding: 12px;
+        transition: all 0.25s ease;
+        text-decoration: none;
       }
 
-      .projects img {
+      .project-card:hover {
+        border-color: #58a6ff;
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 10px 30px rgba(88, 166, 255, 0.25);
+        background: rgba(88, 166, 255, 0.03);
+      }
+
+      .project-card img {
         width: 100%;
-        border-radius: 10px;
-        transition: 0.2s;
+        border-radius: 8px;
       }
 
-      .projects img:hover {
-        transform: scale(1.03);
-      }
-
-      .impact {
+      .project-card .impact {
+        margin-top: 8px;
         font-size: 13px;
         color: #58a6ff;
-        margin-top: 5px;
+      }
+
+      /* Makes it feel clickable */
+      .project-card:hover {
+        cursor: pointer;
       }
 
       .card {
@@ -138,14 +150,13 @@
 
   <body>
     <div class="container">
-
       <!-- HEADER -->
       <div class="center">
         <h1>🦊 Fox Hackerz</h1>
         <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
         <p>Build. Break. Secure.</p>
 
-        <p style="color:#58a6ff; font-size:14px;">
+        <p style="color: #58a6ff; font-size: 14px">
           Built 4+ cybersecurity & system tools • Focused on performance & real-world use
         </p>
 
@@ -155,9 +166,8 @@
       <!-- ABOUT -->
       <h2>About</h2>
       <p>
-        Fox Hackerz is a developer-driven initiative focused on building practical tools in cybersecurity,
-        systems, and automation. Led by Abhrankan Chakrabarti, the work emphasizes efficiency, simplicity,
-        and real-world usability.
+        Fox Hackerz is a developer-driven initiative focused on building practical tools in cybersecurity, systems, and
+        automation. Led by Abhrankan Chakrabarti, the work emphasizes efficiency, simplicity, and real-world usability.
       </p>
 
       <!-- TERMINAL -->
@@ -167,35 +177,33 @@
       <h2>Projects</h2>
 
       <div class="projects">
-
-        <div>
-          <a href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-            <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark"/>
-          </a>
+        <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
+          <img
+            src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark"
+          />
           <p class="impact">⚡ Fast port scanning + HTTP header analysis</p>
-        </div>
+        </a>
 
-        <div>
-          <a href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-            <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark"/>
-          </a>
+        <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
+          <img
+            src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark"
+          />
           <p class="impact">🔐 File encryption + system-level protection</p>
-        </div>
+        </a>
 
-        <div>
-          <a href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-            <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark"/>
-          </a>
+        <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
+          <img
+            src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark"
+          />
           <p class="impact">🛡 Authenticated PNG vault with tamper detection</p>
-        </div>
+        </a>
 
-        <div>
-          <a href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-            <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark"/>
-          </a>
+        <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
+          <img
+            src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark"
+          />
           <p class="impact">⚡ Instant SSH connections via CLI</p>
-        </div>
-
+        </a>
       </div>
 
       <!-- RESEARCH -->
@@ -203,16 +211,18 @@
       <div class="card">
         <h3>Security & Systems Exploration</h3>
         <p>
-          Focused on building efficient implementations in scanning, encryption, and secure storage systems.
-          Emphasis on minimal design with practical security applications.
+          Focused on building efficient implementations in scanning, encryption, and secure storage systems. Emphasis on
+          minimal design with practical security applications.
         </p>
       </div>
 
       <!-- GITHUB STATS -->
       <h2>GitHub Activity</h2>
       <div class="stats">
-        <img src="https://github-readme-stats-fast.vercel.app/api?username=Abhrankan-Chakrabarti&show_icons=true&theme=dark"/>
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Abhrankan-Chakrabarti&theme=dark"/>
+        <img
+          src="https://github-readme-stats-fast.vercel.app/api?username=Abhrankan-Chakrabarti&show_icons=true&theme=dark"
+        />
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=Abhrankan-Chakrabarti&theme=dark" />
       </div>
 
       <!-- SKILLS -->
@@ -233,15 +243,12 @@
         🔗 <a href="https://github.com/Abhrankan-Chakrabarti">Personal GitHub</a>
       </p>
 
-      <p style="margin-top:20px; color:#58a6ff;">
-        Open to internships & collaborations
-      </p>
+      <p style="margin-top: 20px; color: #58a6ff">Open to internships & collaborations</p>
 
       <!-- FOOTER -->
       <div class="footer">
         <p>🦊 Join the pack. Build. Break. Secure.</p>
       </div>
-
     </div>
 
     <script>
@@ -249,7 +256,7 @@
         "$ foxscan example.com",
         "> 80 ports scanned in seconds",
         "> server: Vercel detected",
-        "> missing security headers flagged"
+        "> missing security headers flagged",
       ];
 
       let i = 0;
@@ -262,6 +269,5 @@
       }
       type();
     </script>
-
   </body>
 </html>
