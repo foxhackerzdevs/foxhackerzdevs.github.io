@@ -46,6 +46,7 @@
 
     .tagline {
       margin-bottom: 10px;
+      font-size: 18px;
     }
 
     .btn {
@@ -62,7 +63,6 @@
       color: #0d1117;
     }
 
-    /* PROJECT GRID */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -109,7 +109,6 @@
       color: #8b949e;
     }
 
-    /* TERMINAL */
     .terminal {
       background: #010409;
       border: 1px solid #30363d;
@@ -121,7 +120,6 @@
       min-height: 80px;
     }
 
-    /* TYPING EFFECT */
     .typing::after {
       content: "|";
       animation: blink 1s infinite;
@@ -140,8 +138,8 @@
   <!-- HEADER -->
   <div class="center">
     <h1>🦊 Fox Hackerz</h1>
-    <p class="tagline"><b>Cybersecurity • Automation • Developer Tools</b></p>
-    <p>Build. Break. Secure.</p>
+    <p class="tagline"><b>Cybersecurity Tools • Automation • Systems Programming</b></p>
+    <p>Building fast, practical tools for real-world security and developer workflows.</p>
 
     <a class="btn" href="https://github.com/foxhackerzdevs">View GitHub</a>
   </div>
@@ -149,8 +147,8 @@
   <!-- ABOUT -->
   <h2>About</h2>
   <p>
-    I build practical cybersecurity and automation tools focused on real-world usage.
-    My work emphasizes clean design, performance, and simplicity.
+    I design and build cybersecurity and automation tools focused on performance, usability, and real-world application.
+    My work spans CLI tooling, system-level utilities, and security-focused software with an emphasis on clean architecture and efficiency.
   </p>
 
   <!-- TERMINAL -->
@@ -165,29 +163,29 @@
 
     <div class="card">
       <h3>FoxScan</h3>
-      <p>Recon tool for port scanning and HTTP header analysis.</p>
-      <p class="impact">⚡ Fast scanning + vulnerability hints</p>
+      <p>High-performance reconnaissance tool for port scanning and HTTP analysis.</p>
+      <p class="impact">⚡ Fast scanning engine • Security insights • Lightweight CLI</p>
       <a href="https://github.com/foxhackerzdevs/FoxScan">View →</a>
     </div>
 
     <div class="card">
       <h3>Cryptify</h3>
-      <p>File and system security tool.</p>
-      <p class="impact">🔐 Encryption + system-level protection</p>
+      <p>Secure encryption utility for protecting files and sensitive data.</p>
+      <p class="impact">🔐 Strong encryption • Data protection • Minimal overhead</p>
       <a href="https://github.com/foxhackerzdevs/Cryptify">View →</a>
     </div>
 
     <div class="card">
       <h3>pinlock-img</h3>
-      <p>Authenticated PNG vault.</p>
-      <p class="impact">🛡 Prevents tampering & corruption</p>
+      <p>PNG-based secure vault with authentication and integrity protection.</p>
+      <p class="impact">🛡 Tamper resistance • Secure storage • Novel approach</p>
       <a href="https://github.com/foxhackerzdevs/pinlock-img">View →</a>
     </div>
 
     <div class="card">
       <h3>sshm</h3>
-      <p>Fast SSH CLI tool.</p>
-      <p class="impact">⚡ Instant SSH access</p>
+      <p>Streamlined SSH management tool for faster remote access.</p>
+      <p class="impact">⚡ Reduced friction • CLI efficiency • Developer productivity</p>
       <a href="https://github.com/foxhackerzdevs/sshm">View →</a>
     </div>
 
@@ -202,6 +200,7 @@
     <span>Cybersecurity</span>
     <span>Automation</span>
     <span>CLI Tools</span>
+    <span>System Design</span>
   </div>
 
   <!-- CONTACT -->
@@ -213,13 +212,13 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>🦊 Join the pack. Build. Break. Secure.</p>
+    <p>🦊 Build. Break. Secure.</p>
   </div>
 
 </div>
 
 <script>
-  const text = "$ foxscan example.com\n→ Open ports detected\n→ Headers analyzed\n→ Potential issues flagged";
+  const text = "$ foxscan example.com\n→ Open ports detected\n→ Headers analyzed\n→ Potential vulnerabilities flagged";
   let i = 0;
 
   function type() {
