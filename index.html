@@ -36,6 +36,16 @@ body {
   position: relative;
 }
 
+.nav a.active::after { /* Show underline on current page */
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #58a6ff;
+  left: 0;
+  bottom: -3px;
+}
+
 .nav a:hover::after {
   content: "";
   position: absolute;
@@ -409,7 +419,11 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 <h3>⭐ Featured Project</h3>
 
 <a class="project-card featured" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-  <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+  <img
+    loading="lazy"
+    src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark"
+    alt="FoxScan featured project card"
+  >
   <div class="project-overlay">
     ⚡ FoxScan — High-speed port scanner with header intelligence
   </div>
@@ -419,22 +433,22 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 
 <div class="projects">
   <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark" alt="FoxScan GitHub repo card">
     <div class="project-overlay">⚡ Port scanning + header intelligence</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark" alt="Cryptify GitHub repo card">
     <div class="project-overlay">🔐 Encryption + system security</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark" alt="pinlock-img GitHub repo card">
     <div class="project-overlay">🛡 Secure image vault</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark" alt="sshm GitHub repo card">
     <div class="project-overlay">⚡ SSH workflow automation</div>
   </a>
 </div>
@@ -580,6 +594,15 @@ const projectObserver = new IntersectionObserver((entries) => {
 // Attach the observer to every project card
 document.querySelectorAll('.project-card').forEach((card) => {
   projectObserver.observe(card);
+});
+
+document.querySelectorAll('.nav a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
 });
 </script>
 
