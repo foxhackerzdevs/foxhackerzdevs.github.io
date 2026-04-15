@@ -412,7 +412,7 @@ const terminal = document.getElementById("terminal");
 const reRunBtn = document.getElementById("reRunBtn");
 
 const lines = [
-  "$ python3 foxscan.py example.com",
+  "fox@hackerz:~$ python3 foxscan.py example.com", // Match the prompt here
   "  _____ _____  ______   ____    _    _   _ ",
   " |  ___/ _ \\ \\/ / ___| / ___|  / \\  | \\ | |",
   " | |_ | | | \\  /\\___ \\| |     / _ \\ |  \\| |",
@@ -435,7 +435,7 @@ const lines = [
   " - Missing X-Content-Type-Options",
   " - Server disclosed: Apache/2.4.41 (Ubuntu)",
   "",
-  "fox@hackerz:~$ " // The final prompt
+  "fox@hackerz:~$ " // Matches the start
 ];
 
 let i = 0, j = 0, started = false, typingTimeout;
@@ -470,7 +470,9 @@ function typeLine() {
 function resetTerminal() {
   clearTimeout(typingTimeout);
   terminal.textContent = "";
-  i = 0; j = 0;
+  i = 0; 
+  j = 0;
+  started = true; // Ensure the observer doesn't try to trigger it again
   typeLine();
 }
 
