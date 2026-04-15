@@ -333,7 +333,7 @@ a { color: #58a6ff; text-decoration: none; }
 Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 </p>
 
-<div class="terminal-wrapper" style="position: relative;">
+<div class="terminal-wrapper">
   <div class="terminal" id="terminal"></div>
   <button id="reRunBtn" title="Re-run Simulation">↻</button>
 </div>
@@ -433,7 +433,9 @@ const lines = [
   "[!] Potential Issues:",
   " - Missing X-Frame-Options (Clickjacking risk)",
   " - Missing X-Content-Type-Options",
-  " - Server disclosed: Apache/2.4.41 (Ubuntu)"
+  " - Server disclosed: Apache/2.4.41 (Ubuntu)",
+  "",
+  "fox@hackerz:~$ " // The final prompt
 ];
 
 let i = 0, j = 0, started = false, typingTimeout;
@@ -443,25 +445,33 @@ function typeLine() {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
+      
+      // Fast banner, normal typing for others
       let charSpeed = (i > 0 && i < 8) ? 0 : Math.floor(Math.random() * (50 - 15 + 1)) + 15;
       typingTimeout = setTimeout(typeLine, charSpeed);
     } else {
-      terminal.appendChild(document.createElement("br"));
-      i++; j = 0;
+      // Don't add a line break after the very last prompt line
+      if (i < lines.length - 1) {
+        terminal.appendChild(document.createElement("br"));
+      }
+      i++; 
+      j = 0;
+      
       let pause = 100;
-      if (i === 1) pause = 500;
-      if (i === 8) pause = 600;
-      if (lines[i-1]?.includes("Starting Port Scan")) pause = 1000;
+      if (i === 1) pause = 500; // Pause after command
+      if (i === 8) pause = 600; // Pause after banner
+      if (i === lines.length - 1) pause = 800; // Pause before final prompt
+      
       typingTimeout = setTimeout(typeLine, pause);
     }
   }
 }
 
 function resetTerminal() {
-  clearTimeout(typingTimeout); // Stop any current animation
-  terminal.textContent = "";   // Clear text
-  i = 0; j = 0;                // Reset counters
-  typeLine();                  // Start again
+  clearTimeout(typingTimeout);
+  terminal.textContent = "";
+  i = 0; j = 0;
+  typeLine();
 }
 
 reRunBtn.addEventListener("click", resetTerminal);
