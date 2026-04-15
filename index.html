@@ -112,8 +112,14 @@ a { color: #58a6ff; text-decoration: none; }
 }
 
 .featured {
-  margin-bottom: 25px;
-  border: 1px solid #58a6ff;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.featured.reveal {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* PROJECTS GRID - Ensure enough spacing for reveal */
@@ -305,8 +311,8 @@ a { color: #58a6ff; text-decoration: none; }
   color: #58a6ff;
   min-height: 150px;
   line-height: 1.5;
-  white-space: pre;      /* Essential for ASCII art */
-  overflow-x: auto;      /* Scroll sideways on mobile */
+  white-space: pre-wrap;
+  overflow-x: auto;
   word-wrap: normal;
   font-size: 13px;
 }
@@ -369,10 +375,10 @@ a { color: #58a6ff; text-decoration: none; }
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <div class="nav">
-  <a href="#">Home</a>
+  <a href="#top">Home</a>
   <a href="#projects">Projects</a>
   <a href="#team">Team</a>
   <a href="#contact">Contact</a>
@@ -526,7 +532,7 @@ let i = 0, j = 0, started = false, typingTimeout;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.append(lines[i][j]);
+      terminal.textContent += lines[i][j];
       j++;
       
       // Fast banner, normal typing for others
@@ -535,7 +541,7 @@ function typeLine() {
     } else {
       // Don't add a line break after the very last prompt line
       if (i < lines.length - 1) {
-        terminal.appendChild(document.createElement("br"));
+        terminal.textContent += "\n";
       }
       i++; 
       j = 0;
@@ -551,6 +557,11 @@ function typeLine() {
 }
 
 function resetTerminal() {
+  reRunBtn.disabled = true;
+
+  setTimeout(() => {
+    reRunBtn.disabled = false;
+  }, 2000);
   clearTimeout(typingTimeout);
   terminal.textContent = "";
   i = 0; 
@@ -592,8 +603,10 @@ const projectObserver = new IntersectionObserver((entries) => {
 });
 
 // Attach the observer to every project card
-document.querySelectorAll('.project-card').forEach((card) => {
-  projectObserver.observe(card);
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.project-card').forEach((card) => {
+    projectObserver.observe(card);
+  });
 });
 
 document.querySelectorAll('.nav a[href^="#"]').forEach(anchor => {
