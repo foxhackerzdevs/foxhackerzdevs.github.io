@@ -116,8 +116,8 @@ a { color: #58a6ff; text-decoration: none; }
 
 .project-card img {
   width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  height: auto;       /* ✅ natural height */
+  display: block;     /* ✅ removes spacing bugs */
 }
 
 /* OVERLAY */
@@ -309,11 +309,11 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.textContent += lines[i][j];
+      terminal.innerHTML += lines[i][j]; // ✅ use ONLY innerHTML
       j++;
       setTimeout(typeLine, 25);
     } else {
-      terminal.innerHTML += "<br>";
+      terminal.innerHTML += "<br>"; // ✅ newline works now
       i++; j = 0;
       setTimeout(typeLine, 200);
     }
