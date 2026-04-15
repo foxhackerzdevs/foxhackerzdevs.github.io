@@ -7,11 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Fox Hackerz | Cybersecurity Team">
-<meta property="og:description" content="High-performance security tools and automation systems built for real-world impact.">
-<meta property="og:type" content="website">
-
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
 <style>
@@ -99,7 +94,7 @@ a { color: #58a6ff; text-decoration: none; }
 /* PROJECTS */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* FIXED */
   gap: 20px;
 }
 
@@ -110,15 +105,17 @@ a { color: #58a6ff; text-decoration: none; }
   overflow: hidden;
   transition: 0.25s;
   background: #0d1117;
+  display: block;
 }
 
 .project-card:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(88,166,255,0.25);
 }
 
 .project-card img {
   width: 100%;
+  height: auto; /* FIXED */
   display: block;
 }
 
@@ -133,6 +130,7 @@ a { color: #58a6ff; text-decoration: none; }
   opacity: 0;
   transform: translateY(100%);
   transition: 0.3s;
+  pointer-events: none;
 }
 
 .project-card:hover .project-overlay {
@@ -222,7 +220,6 @@ a { color: #58a6ff; text-decoration: none; }
 
 <div class="container">
 
-<!-- HERO -->
 <div class="center">
   <h1>🦊 Fox Hackerz</h1>
   <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
@@ -232,45 +229,41 @@ a { color: #58a6ff; text-decoration: none; }
     ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
   </div>
 
-  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank" rel="noopener">GitHub</a>
+  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">GitHub</a>
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Hire / Collaborate</a>
 </div>
 
-<!-- ABOUT -->
 <h2>About</h2>
 <p>
 Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 </p>
 
-<!-- TERMINAL -->
 <div class="terminal" id="terminal"></div>
 
-<!-- PROJECTS -->
 <h2 id="projects">Projects</h2>
 
 <div class="projects">
   <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark" alt="FoxScan">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
     <div class="project-overlay">⚡ Port scanning + header intelligence</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark" alt="Cryptify">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
     <div class="project-overlay">🔐 Encryption + system security</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark" alt="Pinlock">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
     <div class="project-overlay">🛡 Secure image vault</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark" alt="SSHM">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
     <div class="project-overlay">⚡ SSH workflow automation</div>
   </a>
 </div>
 
-<!-- TEAM -->
 <h2 id="team">Team</h2>
 <div class="team">
   <div class="member">
@@ -283,14 +276,12 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta">
   <h2>Work With Us</h2>
   <p>We build real-world cybersecurity tools. Let’s collaborate.</p>
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Contact Us</a>
 </div>
 
-<!-- CONTACT -->
 <h2 id="contact">Contact</h2>
 <p>
 📧 foxhackerzdevs@gmail.com<br>
@@ -318,11 +309,11 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.innerHTML += lines[i][j];
+      terminal.textContent += lines[i][j]; // FIXED
       j++;
       setTimeout(typeLine, 25);
     } else {
-      terminal.innerHTML += "<br>";
+      terminal.innerHTML += "<br>"; // FIXED
       i++; j = 0;
       setTimeout(typeLine, 200);
     }
