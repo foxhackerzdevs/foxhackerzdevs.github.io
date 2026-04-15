@@ -5,16 +5,7 @@
 <title>Fox Hackerz | Cybersecurity Team</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
-
-<meta name="keywords" content="cybersecurity, penetration testing, automation, python tools, networking, security tools, systems programming">
-
-<meta property="og:title" content="Fox Hackerz | Cybersecurity Team">
-<meta property="og:description" content="High-performance security tools and automation systems built for real-world impact.">
-<meta property="og:url" content="https://foxhackerzdevs.github.io">
-
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
 <style>
 body {
@@ -90,16 +81,26 @@ a { color: #58a6ff; text-decoration: none; }
   display: block;
 }
 
+/* FIXED OVERLAY */
 .project-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0,0,0,0.7);
-  padding: 10px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  padding: 15px;
   font-size: 14px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
 }
 
-/* CARDS */
+/* SHOW ONLY ON HOVER */
+.project-card:hover .project-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARD */
 .card {
   border: 1px solid #30363d;
   padding: 20px;
@@ -156,14 +157,8 @@ a { color: #58a6ff; text-decoration: none; }
 <!-- HERO -->
 <div class="center">
   <h1>🦊 Fox Hackerz</h1>
-
   <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
-
   <p style="font-size:20px;"><b>Build. Break. Secure.</b></p>
-
-  <p>
-    We build high-performance cybersecurity tools and automation systems designed for real-world impact.
-  </p>
 
   <div class="stats-bar">
     ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
@@ -176,8 +171,7 @@ a { color: #58a6ff; text-decoration: none; }
 <!-- ABOUT -->
 <h2>About</h2>
 <p>
-Fox Hackerz is a cybersecurity-focused development team building practical, performance-driven tools.
-We specialize in automation, systems programming, and security engineering.
+Fox Hackerz builds practical, performance-driven cybersecurity tools with focus on real-world impact.
 </p>
 
 <!-- TERMINAL -->
@@ -237,7 +231,6 @@ We specialize in automation, systems programming, and security engineering.
 <div class="skills">
   <span>Python</span>
   <span>Bash</span>
-  <span>Systems Programming</span>
   <span>Cybersecurity</span>
   <span>Networking</span>
 </div>
@@ -249,11 +242,6 @@ We specialize in automation, systems programming, and security engineering.
 🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
 </p>
 
-<p style="margin-top:20px; color:#58a6ff;">
-🚀 Open to internships, collaborations, and real-world projects
-</p>
-
-<!-- FOOTER -->
 <div class="footer">
   <p>🦊 Fox Hackerz — Build. Break. Secure.</p>
 </div>
@@ -277,7 +265,7 @@ function typeLine() {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
-      setTimeout(typeLine, 30);
+      setTimeout(typeLine, 25);
     } else {
       terminal.appendChild(document.createElement("br"));
       i++; j = 0;
@@ -286,7 +274,17 @@ function typeLine() {
   }
 }
 
-window.onload = typeLine;
+/* SCROLL TRIGGER FIX */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      typeLine();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+observer.observe(document.getElementById("terminal"));
 </script>
 
 </body>
