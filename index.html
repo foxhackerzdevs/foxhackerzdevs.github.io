@@ -33,6 +33,7 @@ body {
   font-size: 14px;
 }
 
+/* LAYOUT */
 .container {
   max-width: 1100px;
   margin: auto;
@@ -55,6 +56,7 @@ a { color: #58a6ff; text-decoration: none; }
 
 .tagline { font-size: 20px; }
 
+/* BUTTON */
 .btn {
   display: inline-block;
   margin: 10px 5px;
@@ -76,13 +78,14 @@ a { color: #58a6ff; text-decoration: none; }
   color: #58a6ff;
 }
 
-/* PROJECTS */
+/* PROJECT GRID */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
+/* PROJECT CARD */
 .project-card {
   position: relative;
   display: block;
@@ -91,6 +94,7 @@ a { color: #58a6ff; text-decoration: none; }
   overflow: hidden;
   transition: 0.25s;
   background: #0d1117;
+  min-height: 180px; /* 🔥 prevents collapse */
 }
 
 .project-card:hover {
@@ -98,18 +102,26 @@ a { color: #58a6ff; text-decoration: none; }
   box-shadow: 0 10px 30px rgba(88,166,255,0.25);
 }
 
+/* IMAGE FIX */
 .project-card img {
   width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16/9; /* 🔥 fixes layout shift */
+  object-fit: cover;
 }
 
-/* OVERLAY */
+/* OVERLAY FIX */
 .project-overlay {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.85));
-  padding: 15px;
+  left: 0;
+  right: 0;
+
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  padding: 12px;
   font-size: 14px;
+
   opacity: 0;
   transform: translateY(100%);
   transition: all 0.3s ease;
@@ -120,7 +132,7 @@ a { color: #58a6ff; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 @media (hover: none) {
   .project-overlay {
     position: static;
@@ -177,7 +189,6 @@ a { color: #58a6ff; text-decoration: none; }
 
 <body>
 
-<!-- NAVBAR -->
 <div class="nav">
   <a href="#">Home</a>
   <a href="#projects">Projects</a>
@@ -187,11 +198,10 @@ a { color: #58a6ff; text-decoration: none; }
 
 <div class="container">
 
-<!-- HERO -->
 <div class="center">
   <h1>🦊 Fox Hackerz</h1>
   <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
-  <p style="font-size:20px;"><b>Build. Break. Secure.</b></p>
+  <p><b>Build. Break. Secure.</b></p>
 
   <div class="stats-bar">
     ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
@@ -201,17 +211,13 @@ a { color: #58a6ff; text-decoration: none; }
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Hire / Collaborate</a>
 </div>
 
-<!-- ABOUT -->
 <h2>About</h2>
 <p>
-Fox Hackerz builds practical, performance-driven cybersecurity tools with a focus on real-world impact.
-We specialize in automation, systems programming, and security engineering.
+Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 </p>
 
-<!-- TERMINAL -->
 <div class="terminal" id="terminal"></div>
 
-<!-- PROJECTS -->
 <h2 id="projects">Projects</h2>
 
 <div class="projects">
@@ -238,28 +244,24 @@ We specialize in automation, systems programming, and security engineering.
 
 </div>
 
-<!-- TEAM -->
 <h2 id="team">Team</h2>
 <div class="team">
   <div class="member">
     <b>Abhrankan Chakrabarti</b>
-    <p>Systems • Algorithms • Security</p>
+    <p>Systems • Security</p>
   </div>
-
   <div class="member">
     <b>Core Contributors</b>
-    <p>Automation • Networking • CLI Tools</p>
+    <p>Automation • Networking</p>
   </div>
 </div>
 
-<!-- CTA -->
 <div class="cta">
   <h2>Work With Us</h2>
-  <p>Looking for cybersecurity tools, automation, or system-level solutions?</p>
+  <p>Looking for cybersecurity or automation solutions?</p>
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Contact Us</a>
 </div>
 
-<!-- CONTACT -->
 <h2 id="contact">Contact</h2>
 <p>
 📧 foxhackerzdevs@gmail.com<br>
@@ -273,6 +275,8 @@ We specialize in automation, systems programming, and security engineering.
 </div>
 
 <script>
+const terminal = document.getElementById("terminal");
+
 const lines = [
   "$ foxscan example.com",
   "> scanning ports...",
@@ -280,36 +284,38 @@ const lines = [
   "> vulnerabilities flagged"
 ];
 
-let i = 0, j = 0;
-let started = false;
+let i = 0, j = 0, started = false;
 
 function typeLine() {
-  const terminal = document.getElementById("terminal");
-
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.append(lines[i][j]);
+      terminal.textContent += lines[i][j];
       j++;
       setTimeout(typeLine, 25);
     } else {
-      terminal.appendChild(document.createElement("br"));
+      terminal.innerHTML += "<br>";
       i++; j = 0;
       setTimeout(typeLine, 200);
     }
   }
 }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !started) {
-      started = true;
-      typeLine();
-      observer.disconnect();
-    }
-  });
-}, { threshold: 0.5 });
+/* FIXED OBSERVER */
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        typeLine();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
 
-observer.observe(document.getElementById("terminal"));
+  observer.observe(terminal);
+} else {
+  typeLine();
+}
 </script>
 
 </body>
