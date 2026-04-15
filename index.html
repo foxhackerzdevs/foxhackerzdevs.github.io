@@ -194,8 +194,19 @@ a { color: #58a6ff; text-decoration: none; }
   margin-top: 20px;
   color: #58a6ff;
   min-height: 100px;
-  white-space: pre-wrap; /* Better line wrapping for mobile */
-  word-break: break-all;
+  /* Fix for ASCII Art and Mobile */
+  white-space: pre; 
+  overflow-x: auto;
+  font-size: 13px; /* Slightly smaller for better fit */
+}
+
+/* Ensure custom scrollbar for the terminal if it overflows */
+.terminal::-webkit-scrollbar {
+  height: 4px;
+}
+.terminal::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 10px;
 }
 
 .terminal::after {
@@ -337,6 +348,7 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 const terminal = document.getElementById("terminal");
 
 const lines = [
+  "$ python3 foxscan.py example.com",
   "  _____ _____  ______   ____    _    _   _ ",
   " |  ___/ _ \\ \\/ / ___| / ___|  / \\  | \\ | |",
   " | |_ | | | \\  /\\___ \\| |     / _ \\ |  \\| |",
@@ -345,7 +357,6 @@ const lines = [
   "                                           ",
   "        FoxScan v2.0 - Recon Tool",
   "",
-  "$ python3 foxscan.py example.com",
   "[+] Starting Port Scan on: example.com",
   "example.com:80 -> open (Apache httpd)",
   "example.com:443 -> open (nginx)",
@@ -368,19 +379,21 @@ function typeLine() {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
-      // Fast typing for the banner and headers
-      const charSpeed = i < 7 ? 5 : Math.floor(Math.random() * (60 - 15 + 1)) + 15;
+      
+      // Command line (index 0) types at normal speed
+      // Banner (indices 1-7) types instantly
+      let charSpeed = (i > 0 && i < 8) ? 0 : Math.floor(Math.random() * (50 - 15 + 1)) + 15;
       setTimeout(typeLine, charSpeed);
     } else {
       terminal.appendChild(document.createElement("br"));
       i++; 
       j = 0;
       
-      // Simulate "processing" pauses after specific steps
-      let pause = 150;
-      if (lines[i-1].includes("Starting Port Scan")) pause = 800;
-      if (lines[i-1].includes("Checking Headers")) pause = 600;
-      if (lines[i-1].includes("Issues")) pause = 400;
+      // Logic-based pauses
+      let pause = 100;
+      if (i === 1) pause = 500; // Pause after command before banner pops
+      if (i === 8) pause = 600; // Pause after banner before scan
+      if (lines[i-1]?.includes("Starting Port Scan")) pause = 1000;
       
       setTimeout(typeLine, pause);
     }
