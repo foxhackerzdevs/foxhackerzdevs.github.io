@@ -8,14 +8,13 @@
 
 <meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
 
-<!-- SEO Boost -->
-<meta name="keywords" content="cybersecurity, penetration testing, automation, python tools, networking, security tools, developers, systems programming">
+<meta name="keywords" content="cybersecurity, penetration testing, automation, python tools, networking, security tools, systems programming">
 
-<!-- Open Graph (for LinkedIn / GitHub previews) -->
 <meta property="og:title" content="Fox Hackerz | Cybersecurity Team">
 <meta property="og:description" content="High-performance security tools and automation systems built for real-world impact.">
 <meta property="og:url" content="https://foxhackerzdevs.github.io">
-<meta property="og:type" content="website">
+
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
 <style>
 body {
@@ -31,34 +30,24 @@ body {
   padding: 40px 20px;
 }
 
-h1 { color: #58a6ff; font-size: 42px; margin-bottom: 10px; }
-
+h1 { color: #58a6ff; font-size: 42px; }
 h2 {
   border-bottom: 1px solid #30363d;
   padding-bottom: 5px;
   margin-top: 60px;
 }
 
-p {
-  color: #8b949e;
-  line-height: 1.6;
-}
+p { color: #8b949e; line-height: 1.6; }
 
-a {
-  color: #58a6ff;
-  text-decoration: none;
-}
+a { color: #58a6ff; text-decoration: none; }
 
 .center { text-align: center; }
 
-.tagline {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+.tagline { font-size: 20px; }
 
 .btn {
   display: inline-block;
-  margin-top: 15px;
+  margin: 10px 5px;
   padding: 10px 20px;
   border: 1px solid #58a6ff;
   border-radius: 6px;
@@ -70,14 +59,13 @@ a {
   color: #0d1117;
 }
 
-/* HERO STATS */
 .stats-bar {
   margin-top: 20px;
   font-size: 14px;
   color: #58a6ff;
 }
 
-/* PROJECT GRID */
+/* PROJECTS */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -85,28 +73,30 @@ a {
 }
 
 .project-card {
-  display: block;
+  position: relative;
   border: 1px solid #30363d;
   border-radius: 12px;
-  padding: 12px;
-  transition: all 0.25s ease;
+  overflow: hidden;
+  transition: 0.25s;
 }
 
 .project-card:hover {
-  border-color: #58a6ff;
   transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(88,166,255,0.25);
 }
 
 .project-card img {
   width: 100%;
-  border-radius: 8px;
+  display: block;
 }
 
-.impact {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #58a6ff;
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  padding: 10px;
+  font-size: 14px;
 }
 
 /* CARDS */
@@ -114,6 +104,20 @@ a {
   border: 1px solid #30363d;
   padding: 20px;
   border-radius: 12px;
+}
+
+/* TEAM */
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.member {
+  border: 1px solid #30363d;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 /* SKILLS */
@@ -138,18 +142,6 @@ a {
   min-height: 100px;
 }
 
-.terminal::after {
-  content: "█";
-  margin-left: 4px;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* FOOTER */
 .footer {
   text-align: center;
   margin-top: 60px;
@@ -170,35 +162,23 @@ a {
   <p style="font-size:20px;"><b>Build. Break. Secure.</b></p>
 
   <p>
-    We build high-performance cybersecurity tools and automation systems designed for real-world use.
+    We build high-performance cybersecurity tools and automation systems designed for real-world impact.
   </p>
 
   <div class="stats-bar">
-    ⚡ 4+ Tools Built • 🔐 Security-Focused • 🧠 Systems Engineering Approach
+    ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
   </div>
 
-  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank" rel="noopener">
-    View Team GitHub
-  </a>
+  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">GitHub</a>
+  <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Hire / Collaborate</a>
 </div>
 
 <!-- ABOUT -->
-<h2>About the Team</h2>
+<h2>About</h2>
 <p>
 Fox Hackerz is a cybersecurity-focused development team building practical, performance-driven tools.
-We specialize in systems programming, automation, and security engineering with a strong focus on simplicity and efficiency.
+We specialize in automation, systems programming, and security engineering.
 </p>
-
-<!-- WHAT MAKES US DIFFERENT -->
-<h2>What Sets Us Apart</h2>
-<div class="card">
-  <p>
-  • Real-world tools — not just demos<br>
-  • Performance-first engineering mindset<br>
-  • Minimal, efficient implementations<br>
-  • Security-driven design approach
-  </p>
-</div>
 
 <!-- TERMINAL -->
 <div class="terminal" id="terminal"></div>
@@ -208,36 +188,48 @@ We specialize in systems programming, automation, and security engineering with 
 
 <div class="projects">
 
-  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank" rel="noopener">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
-    <p class="impact">⚡ Port scanning + HTTP header intelligence</p>
+  <a href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
+    <div class="project-card">
+      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+      <div class="project-overlay">⚡ Port scanning + header intelligence</div>
+    </div>
   </a>
 
-  <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank" rel="noopener">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
-    <p class="impact">🔐 Encryption + system-level protection</p>
+  <a href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
+    <div class="project-card">
+      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
+      <div class="project-overlay">🔐 Encryption + system security</div>
+    </div>
   </a>
 
-  <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank" rel="noopener">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
-    <p class="impact">🛡 Secure image vault with tamper detection</p>
+  <a href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
+    <div class="project-card">
+      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
+      <div class="project-overlay">🛡 Secure image vault</div>
+    </div>
   </a>
 
-  <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank" rel="noopener">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
-    <p class="impact">⚡ Fast SSH workflow automation</p>
+  <a href="https://github.com/foxhackerzdevs/sshm" target="_blank">
+    <div class="project-card">
+      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
+      <div class="project-overlay">⚡ SSH workflow automation</div>
+    </div>
   </a>
 
 </div>
 
-<!-- RESEARCH -->
-<h2>Research / Experiments</h2>
-<div class="card">
-  <h3>Security & Systems Exploration</h3>
-  <p>
-    Exploring scanning optimization, encryption techniques, and secure storage systems —
-    focusing on bridging theory with practical implementation.
-  </p>
+<!-- TEAM -->
+<h2>Team</h2>
+<div class="team">
+  <div class="member">
+    <b>Abhrankan Chakrabarti</b>
+    <p>Systems • Algorithms • Security</p>
+  </div>
+
+  <div class="member">
+    <b>Core Contributors</b>
+    <p>Automation • Networking • CLI Tools</p>
+  </div>
 </div>
 
 <!-- STACK -->
@@ -248,18 +240,17 @@ We specialize in systems programming, automation, and security engineering with 
   <span>Systems Programming</span>
   <span>Cybersecurity</span>
   <span>Networking</span>
-  <span>Automation</span>
 </div>
 
 <!-- CONTACT -->
 <h2>Contact</h2>
 <p>
 📧 foxhackerzdevs@gmail.com<br>
-🔗 <a href="https://github.com/foxhackerzdevs" target="_blank" rel="noopener">Team GitHub</a>
+🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
 </p>
 
 <p style="margin-top:20px; color:#58a6ff;">
-🚀 Open to internships, collaborations, and real-world problem solving
+🚀 Open to internships, collaborations, and real-world projects
 </p>
 
 <!-- FOOTER -->
@@ -274,12 +265,10 @@ const lines = [
   "$ foxscan example.com",
   "> scanning ports...",
   "> detecting services...",
-  "> analyzing headers...",
   "> vulnerabilities flagged"
 ];
 
 let i = 0, j = 0;
-let started = false; // prevents duplicate runs
 
 function typeLine() {
   const terminal = document.getElementById("terminal");
@@ -288,54 +277,16 @@ function typeLine() {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
-
-      const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
-      setTimeout(typeLine, charSpeed);
-
+      setTimeout(typeLine, 30);
     } else {
       terminal.appendChild(document.createElement("br"));
-      i++;
-      j = 0;
-
-      const linePause = Math.floor(Math.random() * (500 - 200 + 1)) + 200;
-      setTimeout(typeLine, linePause);
+      i++; j = 0;
+      setTimeout(typeLine, 200);
     }
   }
 }
 
-// Scroll trigger (fixed)
-function scrollTrigger(selector, options = {}) {
-  let els = Array.from(document.querySelectorAll(selector));
-  els.forEach((el) => addObserver(el, options));
-}
-
-function addObserver(el, options) {
-  if (!("IntersectionObserver" in window)) {
-    options.cb && options.cb(el);
-    return;
-  }
-
-  let observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (!started) {
-          started = true;
-          options.cb && options.cb(el);
-        }
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.5 // ✅ correctly placed
-  });
-
-  observer.observe(el);
-}
-
-// INIT
-scrollTrigger("#terminal", {
-  cb: () => typeLine()
-});
+window.onload = typeLine;
 </script>
 
 </body>
