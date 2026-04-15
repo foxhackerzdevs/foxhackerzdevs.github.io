@@ -194,12 +194,13 @@ a { color: #58a6ff; text-decoration: none; }
   margin-top: 20px;
   color: #58a6ff;
   min-height: 100px;
-  white-space: pre-line; /* FIX */
+  white-space: pre-wrap; /* Better line wrapping for mobile */
+  word-break: break-all;
 }
 
 .terminal::after {
   content: "█";
-  animation: blink 1s infinite;
+  animation: blink 1s step-end infinite;
   margin-left: 3px;
 }
 
@@ -338,6 +339,7 @@ const lines = [
   "$ foxscan example.com",
   "> scanning ports...",
   "> detecting services...",
+  "> analyzing headers...",
   "> vulnerabilities flagged"
 ];
 
@@ -346,13 +348,22 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.textContent += lines[i][j];
+      // Append character
+      terminal.append(lines[i][j]);
       j++;
-      setTimeout(typeLine, 25);
+      
+      // Random human-like typing speed (15ms to 80ms)
+      const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
+      setTimeout(typeLine, charSpeed);
     } else {
-      terminal.textContent += "\n";
-      i++; j = 0;
-      setTimeout(typeLine, 200);
+      // Line break
+      terminal.appendChild(document.createElement("br"));
+      i++; 
+      j = 0;
+      
+      // Random pause between lines (200ms to 600ms)
+      const linePause = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
+      setTimeout(typeLine, linePause);
     }
   }
 }
@@ -362,10 +373,10 @@ const observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting && !started) {
       started = true;
       typeLine();
-      observer.disconnect();
+      observer.disconnect(); // Stop observing once it starts
     }
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.5 }); // Trigger when 50% visible
 
 observer.observe(terminal);
 </script>
