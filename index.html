@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
 
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
+
 <style>
 body {
   margin: 0;
@@ -22,6 +24,7 @@ body {
 }
 
 h1 { color: #58a6ff; font-size: 42px; }
+
 h2 {
   border-bottom: 1px solid #30363d;
   padding-bottom: 5px;
@@ -65,10 +68,12 @@ a { color: #58a6ff; text-decoration: none; }
 
 .project-card {
   position: relative;
+  display: block;
   border: 1px solid #30363d;
   border-radius: 12px;
   overflow: hidden;
   transition: 0.25s;
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -81,7 +86,7 @@ a { color: #58a6ff; text-decoration: none; }
   display: block;
 }
 
-/* FIXED OVERLAY */
+/* OVERLAY */
 .project-overlay {
   position: absolute;
   bottom: 0;
@@ -94,10 +99,17 @@ a { color: #58a6ff; text-decoration: none; }
   transition: all 0.3s ease;
 }
 
-/* SHOW ONLY ON HOVER */
 .project-card:hover .project-overlay {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* MOBILE FIX */
+@media (hover: none) {
+  .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* CARD */
@@ -143,6 +155,7 @@ a { color: #58a6ff; text-decoration: none; }
   min-height: 100px;
 }
 
+/* FOOTER */
 .footer {
   text-align: center;
   margin-top: 60px;
@@ -160,18 +173,28 @@ a { color: #58a6ff; text-decoration: none; }
   <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
   <p style="font-size:20px;"><b>Build. Break. Secure.</b></p>
 
+  <p style="color:#8b949e; font-size:14px;">
+    Built by developers passionate about real-world security & systems engineering
+  </p>
+
   <div class="stats-bar">
     ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
   </div>
 
-  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">GitHub</a>
-  <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Hire / Collaborate</a>
+  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank" rel="noopener noreferrer">
+    GitHub
+  </a>
+
+  <a class="btn" href="mailto:foxhackerzdevs@gmail.com">
+    Hire / Collaborate
+  </a>
 </div>
 
 <!-- ABOUT -->
 <h2>About</h2>
 <p>
-Fox Hackerz builds practical, performance-driven cybersecurity tools with focus on real-world impact.
+Fox Hackerz builds practical, performance-driven cybersecurity tools with a focus on real-world impact.
+We specialize in automation, systems programming, and security engineering.
 </p>
 
 <!-- TERMINAL -->
@@ -182,32 +205,24 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools with focus 
 
 <div class="projects">
 
-  <a href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-    <div class="project-card">
-      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
-      <div class="project-overlay">⚡ Port scanning + header intelligence</div>
-    </div>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank" rel="noopener noreferrer">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+    <div class="project-overlay">⚡ Port scanning + header intelligence</div>
   </a>
 
-  <a href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-    <div class="project-card">
-      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
-      <div class="project-overlay">🔐 Encryption + system security</div>
-    </div>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank" rel="noopener noreferrer">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
+    <div class="project-overlay">🔐 Encryption + system security</div>
   </a>
 
-  <a href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-    <div class="project-card">
-      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
-      <div class="project-overlay">🛡 Secure image vault</div>
-    </div>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank" rel="noopener noreferrer">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
+    <div class="project-overlay">🛡 Secure image vault</div>
   </a>
 
-  <a href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-    <div class="project-card">
-      <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
-      <div class="project-overlay">⚡ SSH workflow automation</div>
-    </div>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank" rel="noopener noreferrer">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
+    <div class="project-overlay">⚡ SSH workflow automation</div>
   </a>
 
 </div>
@@ -239,7 +254,7 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools with focus 
 <h2>Contact</h2>
 <p>
 📧 foxhackerzdevs@gmail.com<br>
-🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
+🔗 <a href="https://github.com/foxhackerzdevs" target="_blank" rel="noopener noreferrer">Team GitHub</a>
 </p>
 
 <div class="footer">
@@ -257,6 +272,7 @@ const lines = [
 ];
 
 let i = 0, j = 0;
+let started = false;
 
 function typeLine() {
   const terminal = document.getElementById("terminal");
@@ -274,10 +290,10 @@ function typeLine() {
   }
 }
 
-/* SCROLL TRIGGER FIX */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
+    if (entry.isIntersecting && !started) {
+      started = true;
       typeLine();
       observer.disconnect();
     }
