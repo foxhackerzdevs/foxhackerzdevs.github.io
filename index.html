@@ -10,6 +10,10 @@
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: radial-gradient(circle at top, rgba(88,166,255,0.08), transparent 40%), #0d1117;
@@ -17,7 +21,7 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* NAVBAR */
+/* NAV */
 .nav {
   position: sticky;
   top: 0;
@@ -31,6 +35,17 @@ body {
 .nav a {
   margin-right: 15px;
   font-size: 14px;
+  position: relative;
+}
+
+.nav a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #58a6ff;
+  left: 0;
+  bottom: -3px;
 }
 
 /* LAYOUT */
@@ -45,7 +60,7 @@ h1 { color: #58a6ff; font-size: 42px; }
 h2 {
   border-bottom: 1px solid #30363d;
   padding-bottom: 5px;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 p { color: #8b949e; line-height: 1.6; }
@@ -78,53 +93,44 @@ a { color: #58a6ff; text-decoration: none; }
   color: #58a6ff;
 }
 
-/* PROJECT GRID */
+/* PROJECTS */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 
-/* PROJECT CARD */
 .project-card {
   position: relative;
-  display: block;
   border: 1px solid #30363d;
   border-radius: 12px;
   overflow: hidden;
   transition: 0.25s;
   background: #0d1117;
-  min-height: 180px; /* 🔥 prevents collapse */
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: 0 10px 30px rgba(88,166,255,0.25);
 }
 
-/* IMAGE FIX */
 .project-card img {
   width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 16/9; /* 🔥 fixes layout shift */
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
 
-/* OVERLAY FIX */
+/* OVERLAY */
 .project-overlay {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-
+  width: 100%;
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   padding: 12px;
   font-size: 14px;
-
   opacity: 0;
   transform: translateY(100%);
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .project-card:hover .project-overlay {
@@ -132,7 +138,6 @@ a { color: #58a6ff; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* MOBILE */
 @media (hover: none) {
   .project-overlay {
     position: static;
@@ -155,6 +160,12 @@ a { color: #58a6ff; text-decoration: none; }
   padding: 15px;
   border-radius: 10px;
   text-align: center;
+  transition: 0.2s;
+}
+
+.member:hover {
+  border-color: #58a6ff;
+  transform: translateY(-4px);
 }
 
 /* TERMINAL */
@@ -167,12 +178,23 @@ a { color: #58a6ff; text-decoration: none; }
   margin-top: 20px;
   color: #58a6ff;
   min-height: 100px;
+  position: relative;
+}
+
+.terminal::after {
+  content: "█";
+  animation: blink 1s infinite;
+  margin-left: 3px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 /* CTA */
 .cta {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 70px;
   padding: 30px;
   border: 1px solid #30363d;
   border-radius: 12px;
@@ -221,7 +243,6 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 <h2 id="projects">Projects</h2>
 
 <div class="projects">
-
   <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
     <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
     <div class="project-overlay">⚡ Port scanning + header intelligence</div>
@@ -241,7 +262,6 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
     <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
     <div class="project-overlay">⚡ SSH workflow automation</div>
   </a>
-
 </div>
 
 <h2 id="team">Team</h2>
@@ -258,7 +278,7 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 
 <div class="cta">
   <h2>Work With Us</h2>
-  <p>Looking for cybersecurity or automation solutions?</p>
+  <p>We build real-world cybersecurity tools. Let’s collaborate or work together.</p>
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Contact Us</a>
 </div>
 
@@ -300,22 +320,17 @@ function typeLine() {
   }
 }
 
-/* FIXED OBSERVER */
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !started) {
-        started = true;
-        typeLine();
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+      started = true;
+      typeLine();
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
 
-  observer.observe(terminal);
-} else {
-  typeLine();
-}
+observer.observe(terminal);
 </script>
 
 </body>
