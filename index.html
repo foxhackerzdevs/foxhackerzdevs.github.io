@@ -91,6 +91,21 @@ a { color: #58a6ff; text-decoration: none; }
   color: #58a6ff;
 }
 
+.metrics {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #58a6ff;
+  flex-wrap: wrap;
+}
+
+.featured {
+  margin-bottom: 25px;
+  border: 1px solid #58a6ff;
+}
+
 /* PROJECTS */
 .projects {
   display: grid;
@@ -110,8 +125,8 @@ a { color: #58a6ff; text-decoration: none; }
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(88,166,255,0.25);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 0 25px rgba(88,166,255,0.25);
 }
 
 .project-card img {
@@ -230,6 +245,12 @@ a { color: #58a6ff; text-decoration: none; }
     ⚡ 4+ Tools • 🔐 Security-first • 🧠 Systems Engineering
   </div>
 
+  <div class="metrics">
+    <div>⚡ Fast CLI Tools</div>
+    <div>🔐 Security Focused</div>
+    <div>🧠 Systems Level Builds</div>
+  </div>
+
   <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">GitHub</a>
   <a class="btn" href="mailto:foxhackerzdevs@gmail.com">Hire / Collaborate</a>
 </div>
@@ -241,27 +262,42 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 
 <div class="terminal" id="terminal"></div>
 
+<h3>⭐ Featured Project</h3>
+
+<a class="project-card featured" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
+  <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+  <div class="project-overlay">
+    ⚡ FoxScan — High-speed port scanner with header intelligence
+  </div>
+</a>
+
 <h2 id="projects">Projects</h2>
 
 <div class="projects">
   <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
     <div class="project-overlay">⚡ Port scanning + header intelligence</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
     <div class="project-overlay">🔐 Encryption + system security</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
     <div class="project-overlay">🛡 Secure image vault</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
     <div class="project-overlay">⚡ SSH workflow automation</div>
+  </a>
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">
+    View All Projects →
   </a>
 </div>
 
