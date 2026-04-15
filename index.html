@@ -138,6 +138,17 @@ a {
   min-height: 100px;
 }
 
+.terminal::after {
+  content: "█";
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* FOOTER */
 .footer {
   text-align: center;
@@ -270,13 +281,17 @@ const lines = [
 let i = 0, j = 0;
 
 function typeLine() {
+  const terminal = document.getElementById("terminal");
+  
   if (i < lines.length) {
     if (j < lines[i].length) {
-      document.getElementById("terminal").innerHTML += lines[i][j];
+      // Append character
+      terminal.append(lines[i][j]);
       j++;
       setTimeout(typeLine, 20);
     } else {
-      document.getElementById("terminal").innerHTML += "<br>";
+      // Append line break
+      terminal.appendChild(document.createElement("br"));
       i++;
       j = 0;
       setTimeout(typeLine, 200);
