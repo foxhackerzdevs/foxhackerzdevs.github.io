@@ -1,283 +1,279 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Fox Hackerz | Cybersecurity Team Portfolio</title>
+<head>
+<meta charset="UTF-8" />
+<title>Fox Hackerz | Cybersecurity Team</title>
 
-    <!-- SEO -->
-    <meta name="description" content="Fox Hackerz builds practical cybersecurity, systems, and automation tools. Focused on real-world security, performance, and minimal design." />
-    <meta name="keywords" content="cybersecurity, automation, systems programming, python, bash, security tools, port scanner, encryption, CLI tools" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
 
-    <style>
-      body {
-        margin: 0;
-        background: radial-gradient(circle at top, rgba(88,166,255,0.08), transparent 40%), #0d1117;
-        color: #c9d1d9;
-        font-family: "Segoe UI", Arial, sans-serif;
-      }
+<style>
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, rgba(88,166,255,0.08), transparent 40%), #0d1117;
+  color: #c9d1d9;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
-      .container {
-        max-width: 1100px;
-        margin: auto;
-        padding: 40px 20px;
-      }
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
 
-      h1 { color: #58a6ff; }
+h1 { color: #58a6ff; font-size: 42px; margin-bottom: 10px; }
+h2 {
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 5px;
+  margin-top: 60px;
+}
 
-      h2 {
-        border-bottom: 1px solid #30363d;
-        padding-bottom: 5px;
-        margin-top: 50px;
-      }
+p {
+  color: #8b949e;
+  line-height: 1.6;
+}
 
-      p {
-        color: #8b949e;
-        line-height: 1.6;
-      }
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
 
-      a {
-        color: #58a6ff;
-        text-decoration: none;
-      }
+.center { text-align: center; }
 
-      .center { text-align: center; }
+.tagline {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
-      .tagline {
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: 1px solid #58a6ff;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+.btn:hover {
+  background: #58a6ff;
+  color: #0d1117;
+}
 
-      .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 18px;
-        border: 1px solid #58a6ff;
-        border-radius: 6px;
-        transition: 0.2s;
-      }
+/* HERO STATS */
+.stats-bar {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #58a6ff;
+}
 
-      .btn:hover {
-        background: #58a6ff;
-        color: #0d1117;
-      }
+/* PROJECT GRID */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
 
-      /* PROJECTS */
-      .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
+.project-card {
+  display: block;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.25s ease;
+}
 
-      .project-card {
-        display: block;
-        border: 1px solid #30363d;
-        border-radius: 12px;
-        padding: 12px;
-        transition: all 0.25s ease;
-        cursor: pointer;
-      }
+.project-card:hover {
+  border-color: #58a6ff;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(88,166,255,0.25);
+}
 
-      .project-card:hover {
-        border-color: #58a6ff;
-        transform: translateY(-6px) scale(1.01);
-        box-shadow: 0 10px 30px rgba(88,166,255,0.25);
-        background: rgba(88,166,255,0.03);
-      }
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+}
 
-      .project-card:active { transform: scale(0.98); }
+.impact {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #58a6ff;
+}
 
-      .project-card img {
-        width: 100%;
-        border-radius: 8px;
-      }
+/* CARDS */
+.card {
+  border: 1px solid #30363d;
+  padding: 20px;
+  border-radius: 12px;
+}
 
-      .impact {
-        margin-top: 8px;
-        font-size: 13px;
-        color: #58a6ff;
-      }
+/* SKILLS */
+.skills span {
+  display: inline-block;
+  border: 1px solid #30363d;
+  padding: 6px 10px;
+  margin: 5px;
+  border-radius: 6px;
+  font-size: 13px;
+}
 
-      /* CARD */
-      .card {
-        border: 1px solid #30363d;
-        padding: 20px;
-        border-radius: 12px;
-      }
+/* TERMINAL */
+.terminal {
+  background: #010409;
+  border: 1px solid #30363d;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: monospace;
+  margin-top: 20px;
+  color: #58a6ff;
+  min-height: 100px;
+}
 
-      .card:hover { border-color: #58a6ff; }
+/* FOOTER */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  color: #8b949e;
+}
+</style>
+</head>
 
-      /* SKILLS */
-      .skills span {
-        display: inline-block;
-        border: 1px solid #30363d;
-        padding: 6px 10px;
-        margin: 5px;
-        border-radius: 6px;
-        font-size: 13px;
-      }
+<body>
+<div class="container">
 
-      /* TERMINAL */
-      .terminal {
-        background: #010409;
-        border: 1px solid #30363d;
-        padding: 15px;
-        border-radius: 8px;
-        font-family: monospace;
-        margin-top: 20px;
-        color: #58a6ff;
-        min-height: 90px;
-      }
+<!-- HERO -->
+<div class="center">
+  <h1>🦊 Fox Hackerz</h1>
 
-      /* STATS */
-      .stats img {
-        width: 100%;
-        margin-top: 10px;
-        border-radius: 8px;
-      }
+  <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
 
-      .footer {
-        text-align: center;
-        margin-top: 60px;
-        color: #8b949e;
-      }
-    </style>
-  </head>
+  <p style="font-size:20px;"><b>Build. Break. Secure.</b></p>
 
-  <body>
-    <div class="container">
+  <p>
+    We design high-performance security tools and developer utilities focused on real-world impact.
+  </p>
 
-      <!-- HEADER -->
-      <div class="center">
-        <h1>🦊 Fox Hackerz</h1>
+  <div class="stats-bar">
+    ⚡ 4+ Tools Built • 🔐 Security Focused • 🧠 Systems-Driven Engineering
+  </div>
 
-        <p class="tagline"><b>Cybersecurity • Systems • Automation</b></p>
+  <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">
+    View Team GitHub
+  </a>
+</div>
 
-        <p style="font-size:20px;">Build. Break. Secure.</p>
+<!-- ABOUT -->
+<h2>About the Team</h2>
+<p>
+Fox Hackerz is a cybersecurity-focused development team building practical tools for real-world usage.
+We specialize in low-level systems, automation, and security engineering with a strong emphasis on performance and simplicity.
+</p>
 
-        <p style="color:#58a6ff; font-size:14px;">
-          Building practical security tools, CLI utilities, and system-level solutions
-        </p>
+<!-- WHAT MAKES US DIFFERENT -->
+<h2>What Sets Us Apart</h2>
+<div class="card">
+  <p>
+  • Real-world tools — not just demos<br>
+  • Performance-first engineering<br>
+  • Minimal, efficient implementations<br>
+  • Security-focused design mindset
+  </p>
+</div>
 
-        <a class="btn" href="https://github.com/foxhackerzdevs" target="_blank">
-          View Team GitHub
-        </a>
-      </div>
+<!-- TERMINAL -->
+<div class="terminal" id="terminal"></div>
 
-      <!-- ABOUT -->
-      <h2>About the Team</h2>
-      <p>
-        Fox Hackerz is a developer team focused on building practical tools in cybersecurity,
-        systems, and automation. The goal is simple — create tools that solve real problems
-        with minimal overhead and maximum efficiency.
-      </p>
+<!-- PROJECTS -->
+<h2>Projects</h2>
 
-      <!-- WHAT WE DELIVER -->
-      <h2>What We Deliver</h2>
-      <div class="card">
-        <p>
-          • Fast, performance-focused CLI tools<br>
-          • Real-world cybersecurity utilities<br>
-          • Efficient system-level implementations<br>
-          • Minimal, practical engineering solutions
-        </p>
-      </div>
+<div class="projects">
 
-      <!-- TERMINAL -->
-      <div class="terminal" id="terminal"></div>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
+    <p class="impact">⚡ Port scanning + HTTP header intelligence</p>
+  </a>
 
-      <!-- PROJECTS -->
-      <h2>Projects</h2>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
+    <p class="impact">🔐 Encryption + system-level protection</p>
+  </a>
 
-      <div class="projects">
-        <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-          <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark">
-          <p class="impact">⚡ Port scanning + HTTP header analysis</p>
-        </a>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
+    <p class="impact">🛡 Secure image vault with tamper detection</p>
+  </a>
 
-        <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-          <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark">
-          <p class="impact">🔐 File encryption + system-level protection</p>
-        </a>
+  <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
+    <img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
+    <p class="impact">⚡ Fast SSH workflow automation</p>
+  </a>
 
-        <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-          <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark">
-          <p class="impact">🛡 Authenticated PNG vault</p>
-        </a>
+</div>
 
-        <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
-          <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark">
-          <p class="impact">⚡ Instant SSH connections via CLI</p>
-        </a>
-      </div>
+<!-- RESEARCH -->
+<h2>Research / Experiments</h2>
+<div class="card">
+  <h3>Security & Systems Exploration</h3>
+  <p>
+    Active exploration in scanning optimization, encryption models, and secure storage systems.
+    Focused on bridging theory with practical implementations.
+  </p>
+</div>
 
-      <!-- RESEARCH -->
-      <h2>Research / Experiments</h2>
-      <div class="card">
-        <h3>Security & Systems Exploration</h3>
-        <p>
-          Exploring scanning techniques, encryption models, and secure storage systems with a focus on efficiency and real-world applicability.
-        </p>
-      </div>
+<!-- STACK -->
+<h2>Core Stack</h2>
+<div class="skills">
+  <span>Python</span>
+  <span>Bash</span>
+  <span>Systems Programming</span>
+  <span>Cybersecurity</span>
+  <span>Networking</span>
+  <span>Automation</span>
+</div>
 
-      <!-- SKILLS -->
-      <h2>Core Stack</h2>
-      <div class="skills">
-        <span>Python</span>
-        <span>Bash</span>
-        <span>Systems Programming</span>
-        <span>Cybersecurity</span>
-        <span>Automation</span>
-        <span>Networking</span>
-      </div>
+<!-- CONTACT -->
+<h2>Contact</h2>
+<p>
+📧 foxhackerzdevs@gmail.com<br>
+🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
+</p>
 
-      <!-- CONTACT -->
-      <h2>Contact</h2>
-      <p>
-        📧 abhrankan@gmail.com<br>
-        🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
-      </p>
+<p style="margin-top:20px; color:#58a6ff;">
+🚀 Open to internships, collaborations, and real-world problem solving
+</p>
 
-      <p style="margin-top:20px; color:#58a6ff;">
-        Open to internships, collaborations, and real-world problem solving
-      </p>
+<!-- FOOTER -->
+<div class="footer">
+  <p>🦊 Fox Hackerz — Build. Break. Secure.</p>
+</div>
 
-      <!-- FOOTER -->
-      <div class="footer">
-        <p>🦊 Fox Hackerz — Build. Break. Secure.</p>
-      </div>
+</div>
 
-    </div>
+<script>
+const lines = [
+"$ foxscan example.com",
+"> scanning ports...",
+"> detecting services...",
+"> analyzing headers...",
+"> vulnerabilities flagged"
+];
 
-    <script>
-      const lines = [
-        "$ foxscan example.com",
-        "> scanning ports...",
-        "> detecting services...",
-        "> analyzing headers...",
-        "> missing security headers flagged"
-      ];
+let i = 0, j = 0;
 
-      let i = 0, j = 0;
+function typeLine() {
+  if (i < lines.length) {
+    if (j < lines[i].length) {
+      document.getElementById("terminal").innerHTML += lines[i][j];
+      j++;
+      setTimeout(typeLine, 20);
+    } else {
+      document.getElementById("terminal").innerHTML += "<br>";
+      i++;
+      j = 0;
+      setTimeout(typeLine, 200);
+    }
+  }
+}
+typeLine();
+</script>
 
-      function typeLine() {
-        if (i < lines.length) {
-          if (j < lines[i].length) {
-            document.getElementById("terminal").innerHTML += lines[i][j];
-            j++;
-            setTimeout(typeLine, 20);
-          } else {
-            document.getElementById("terminal").innerHTML += "<br>";
-            i++;
-            j = 0;
-            setTimeout(typeLine, 250);
-          }
-        }
-      }
-
-      typeLine();
-    </script>
-
-  </body>
+</body>
 </html>
