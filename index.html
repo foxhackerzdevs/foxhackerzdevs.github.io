@@ -285,16 +285,21 @@ function typeLine() {
   
   if (i < lines.length) {
     if (j < lines[i].length) {
-      // Append character
       terminal.append(lines[i][j]);
       j++;
-      setTimeout(typeLine, 20);
+      
+      // Random delay between 15ms and 80ms for a "human" feel
+      const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
+      setTimeout(typeLine, charSpeed);
+      
     } else {
-      // Append line break
       terminal.appendChild(document.createElement("br"));
       i++;
       j = 0;
-      setTimeout(typeLine, 200);
+      
+      // Slightly longer pause between full lines (200ms to 500ms)
+      const linePause = Math.floor(Math.random() * (500 - 200 + 1)) + 200;
+      setTimeout(typeLine, linePause);
     }
   }
 }
