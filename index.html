@@ -190,9 +190,20 @@ a { color: #58a6ff; text-decoration: none; }
   border: 1px solid #30363d;
   border-radius: 8px;
   background: #010409;
-  overflow: hidden; /* Keeps the header and body contained */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+
+  /* FADE-IN INITIAL STATE */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* TRIGGERED BY JS */
+.terminal-window.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* HEADER BAR (Fixes the overlapping button issue) */
@@ -431,6 +442,7 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 
 <script>
 const terminal = document.getElementById("terminal");
+const terminalWindow = document.querySelector(".terminal-window"); // Select the wrapper
 const reRunBtn = document.getElementById("reRunBtn");
 
 const lines = [
@@ -504,13 +516,19 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !started) {
       started = true;
-      typeLine();
+      
+      // 1. Show the window
+      terminalWindow.classList.add("visible");
+      
+      // 2. Start typing after a short delay so the fade finishes first
+      setTimeout(typeLine, 400); 
+      
       observer.disconnect();
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 }); // Trigger a bit earlier for smoother visual flow
 
-observer.observe(terminal);
+observer.observe(terminalWindow);
 </script>
 
 </body>
