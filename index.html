@@ -184,20 +184,35 @@ a { color: #58a6ff; text-decoration: none; }
   transform: translateY(-4px);
 }
 
-/* TERMINAL */
-.terminal {
-  background: #010409;
-  border: 1px solid #30363d;
-  padding: 15px;
-  border-radius: 8px;
-  font-family: monospace;
+.terminal-wrapper {
   margin-top: 20px;
+}
+
+#reRunBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid #30363d;
   color: #58a6ff;
-  min-height: 100px;
-  /* Fix for ASCII Art and Mobile */
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+  z-index: 10;
+}
+
+#reRunBtn:hover {
+  background: #58a6ff;
+  color: #0d1117;
+}
+
+/* Ensure terminal is scrollable but stays clean */
+.terminal {
   white-space: pre; 
   overflow-x: auto;
-  font-size: 13px; /* Slightly smaller for better fit */
+  position: relative;
 }
 
 /* Ensure custom scrollbar for the terminal if it overflows */
@@ -273,7 +288,10 @@ a { color: #58a6ff; text-decoration: none; }
 Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 </p>
 
-<div class="terminal" id="terminal"></div>
+<div class="terminal-wrapper" style="position: relative;">
+  <div class="terminal" id="terminal"></div>
+  <button id="reRunBtn" title="Re-run Simulation">↻</button>
+</div>
 
 <h3>⭐ Featured Project</h3>
 
@@ -346,6 +364,7 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 
 <script>
 const terminal = document.getElementById("terminal");
+const reRunBtn = document.getElementById("reRunBtn");
 
 const lines = [
   "$ python3 foxscan.py example.com",
@@ -372,33 +391,35 @@ const lines = [
   " - Server disclosed: Apache/2.4.41 (Ubuntu)"
 ];
 
-let i = 0, j = 0, started = false;
+let i = 0, j = 0, started = false, typingTimeout;
 
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
-      
-      // Command line (index 0) types at normal speed
-      // Banner (indices 1-7) types instantly
       let charSpeed = (i > 0 && i < 8) ? 0 : Math.floor(Math.random() * (50 - 15 + 1)) + 15;
-      setTimeout(typeLine, charSpeed);
+      typingTimeout = setTimeout(typeLine, charSpeed);
     } else {
       terminal.appendChild(document.createElement("br"));
-      i++; 
-      j = 0;
-      
-      // Logic-based pauses
+      i++; j = 0;
       let pause = 100;
-      if (i === 1) pause = 500; // Pause after command before banner pops
-      if (i === 8) pause = 600; // Pause after banner before scan
+      if (i === 1) pause = 500;
+      if (i === 8) pause = 600;
       if (lines[i-1]?.includes("Starting Port Scan")) pause = 1000;
-      
-      setTimeout(typeLine, pause);
+      typingTimeout = setTimeout(typeLine, pause);
     }
   }
 }
+
+function resetTerminal() {
+  clearTimeout(typingTimeout); // Stop any current animation
+  terminal.textContent = "";   // Clear text
+  i = 0; j = 0;                // Reset counters
+  typeLine();                  // Start again
+}
+
+reRunBtn.addEventListener("click", resetTerminal);
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
