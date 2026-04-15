@@ -260,11 +260,11 @@ We specialize in systems programming, automation, and security engineering with 
 
 <script>
 const lines = [
-"$ foxscan example.com",
-"> scanning ports...",
-"> detecting services...",
-"> analyzing headers...",
-"> vulnerabilities flagged"
+  "$ foxscan example.com",
+  "> scanning ports...",
+  "> detecting services...",
+  "> analyzing headers...",
+  "> vulnerabilities flagged"
 ];
 
 let i = 0, j = 0;
@@ -283,7 +283,40 @@ function typeLine() {
     }
   }
 }
-typeLine();
+
+// Initialize the trigger
+scrollTrigger("#terminal", {
+  cb: (el) => {
+    typeLine(); // Starts the animation when #terminal is visible
+  },
+  threshold: 0.5 // Adjust this (0.1 to 1.0) to control when it starts
+});
+
+// Fixed version of your scrollTrigger helper
+function scrollTrigger(selector, options = {}) {
+    let els = Array.from(document.querySelectorAll(selector));
+    els.forEach((el) => {
+        addObserver(el, options);
+    });
+}
+
+function addObserver(el, options) {
+    if (!("IntersectionObserver" in window)) {
+        if (options.cb) options.cb(el);
+        else el.classList.add("active"); // Fixed: changed entry.target to el
+        return;
+    }
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                if (options.cb) options.cb(el);
+                else entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+    observer.observe(el);
+}
 </script>
 
 </body>
