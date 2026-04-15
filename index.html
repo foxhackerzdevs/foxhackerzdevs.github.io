@@ -184,55 +184,100 @@ a { color: #58a6ff; text-decoration: none; }
   transform: translateY(-4px);
 }
 
+/* TERMINAL WRAPPER & CONTAINER */
 .terminal-wrapper {
-  margin-top: 20px;
-}
-
-#reRunBtn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(88, 166, 255, 0.1);
-  border: 1px solid #30363d;
-  color: #58a6ff;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
-  z-index: 10;
-}
-
-#reRunBtn:hover {
-  background: #58a6ff;
-  color: #0d1117;
-}
-
-/* Ensure terminal is scrollable but stays clean */
-.terminal {
-  white-space: pre; 
-  overflow-x: auto;
   position: relative;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden; /* Clips the background to the border-radius */
 }
 
-/* Ensure custom scrollbar for the terminal if it overflows */
-.terminal::-webkit-scrollbar {
-  height: 4px;
+.terminal {
+  background: #010409;
+  border: 1px solid #30363d;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: #58a6ff;
+  min-height: 120px;
+  line-height: 1.5;
+  
+  /* CRITICAL FOR ASCII & MOBILE */
+  white-space: pre;          /* Keeps spaces and line breaks exactly as typed */
+  overflow-x: auto;         /* Allows horizontal scroll on mobile for wide art */
+  word-wrap: normal;        /* Prevents breaking words/art across lines */
+  font-size: 13px;
 }
+
+/* CUSTOM SCROLLBAR FOR TERMINAL (Webkit) */
+.terminal::-webkit-scrollbar {
+  height: 6px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: #010409;
+}
+
 .terminal::-webkit-scrollbar-thumb {
   background: #30363d;
   border-radius: 10px;
 }
 
+.terminal::-webkit-scrollbar-thumb:hover {
+  background: #58a6ff;
+}
+
+/* THE BLINKING CURSOR */
 .terminal::after {
   content: "█";
-  animation: blink 1s step-end infinite;
-  margin-left: 3px;
   display: inline-block;
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* RE-RUN BUTTON */
+#reRunBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(13, 17, 23, 0.8);
+  border: 1px solid #30363d;
+  color: #58a6ff;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#reRunBtn:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+  box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+}
+
+#reRunBtn:active {
+  transform: scale(0.95);
+}
+
+/* RESPONSIVE TWEAK */
+@media (max-width: 600px) {
+  .terminal {
+    font-size: 11px; /* Smaller font on phones to see more art at once */
+    padding: 10px;
+  }
 }
 
 /* CTA */
