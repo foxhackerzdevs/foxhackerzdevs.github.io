@@ -184,50 +184,78 @@ a { color: #58a6ff; text-decoration: none; }
   transform: translateY(-4px);
 }
 
-/* TERMINAL WRAPPER & CONTAINER */
-.terminal-wrapper {
-  position: relative;
+/* TERMINAL WINDOW STRUCTURE */
+.terminal-window {
   margin-top: 20px;
+  border: 1px solid #30363d;
   border-radius: 8px;
-  overflow: hidden; /* Clips the background to the border-radius */
+  background: #010409;
+  overflow: hidden; /* Keeps the header and body contained */
+  display: flex;
+  flex-direction: column;
 }
 
-.terminal {
-  background: #010409;
+/* HEADER BAR (Fixes the overlapping button issue) */
+.terminal-header {
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* RE-RUN BUTTON */
+#reRunBtn {
+  background: rgba(88, 166, 255, 0.05);
   border: 1px solid #30363d;
+  color: #58a6ff;
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: sans-serif;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#reRunBtn:hover {
+  background: #58a6ff;
+  color: #0d1117;
+  border-color: #58a6ff;
+}
+
+/* TERMINAL TEXT AREA */
+.terminal {
   padding: 15px;
-  border-radius: 8px;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   color: #58a6ff;
-  min-height: 120px;
+  min-height: 150px;
   line-height: 1.5;
-  
-  /* CRITICAL FOR ASCII & MOBILE */
-  white-space: pre;          /* Keeps spaces and line breaks exactly as typed */
-  overflow-x: auto;         /* Allows horizontal scroll on mobile for wide art */
-  word-wrap: normal;        /* Prevents breaking words/art across lines */
+  white-space: pre;      /* Essential for ASCII art */
+  overflow-x: auto;      /* Scroll sideways on mobile */
+  word-wrap: normal;
   font-size: 13px;
 }
 
-/* CUSTOM SCROLLBAR FOR TERMINAL (Webkit) */
-.terminal::-webkit-scrollbar {
-  height: 6px;
-}
-
-.terminal::-webkit-scrollbar-track {
-  background: #010409;
-}
-
-.terminal::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 10px;
-}
-
-.terminal::-webkit-scrollbar-thumb:hover {
-  background: #58a6ff;
-}
-
-/* THE BLINKING CURSOR */
+/* BLINKING CURSOR */
 .terminal::after {
   content: "█";
   display: inline-block;
@@ -241,42 +269,29 @@ a { color: #58a6ff; text-decoration: none; }
   50% { opacity: 0; }
 }
 
-/* RE-RUN BUTTON */
-#reRunBtn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(13, 17, 23, 0.8);
-  border: 1px solid #30363d;
-  color: #58a6ff;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(4px);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* CUSTOM SCROLLBAR (Webkit) */
+.terminal::-webkit-scrollbar {
+  height: 6px;
 }
-
-#reRunBtn:hover {
+.terminal::-webkit-scrollbar-track {
+  background: #010409;
+}
+.terminal::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 10px;
+}
+.terminal::-webkit-scrollbar-thumb:hover {
   background: #58a6ff;
-  color: #0d1117;
-  border-color: #58a6ff;
-  box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
 }
 
-#reRunBtn:active {
-  transform: scale(0.95);
-}
-
-/* RESPONSIVE TWEAK */
+/* MOBILE OPTIMIZATION */
 @media (max-width: 600px) {
   .terminal {
-    font-size: 11px; /* Smaller font on phones to see more art at once */
-    padding: 10px;
+    font-size: 11px;
+    padding: 12px;
+  }
+  .terminal-header {
+    padding: 8px 12px;
   }
 }
 
@@ -333,9 +348,16 @@ a { color: #58a6ff; text-decoration: none; }
 Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 </p>
 
-<div class="terminal-wrapper">
+<div class="terminal-window">
+  <div class="terminal-header">
+    <div class="terminal-controls">
+      <div class="control red"></div>
+      <div class="control yellow"></div>
+      <div class="control green"></div>
+    </div>
+    <button id="reRunBtn">↻ Re-run</button>
+  </div>
   <div class="terminal" id="terminal"></div>
-  <button id="reRunBtn" title="Re-run Simulation">↻</button>
 </div>
 
 <h3>⭐ Featured Project</h3>
