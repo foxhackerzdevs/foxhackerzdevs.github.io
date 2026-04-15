@@ -202,6 +202,7 @@ a { color: #58a6ff; text-decoration: none; }
   content: "█";
   animation: blink 1s step-end infinite;
   margin-left: 3px;
+  display: inline-block;
 }
 
 @keyframes blink {
@@ -348,35 +349,36 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      // Append character
+      // Use append for better performance and to keep the cursor at the end
       terminal.append(lines[i][j]);
       j++;
-      
-      // Random human-like typing speed (15ms to 80ms)
+
+      // Randomized speed between 15ms and 80ms for organic feel
       const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
       setTimeout(typeLine, charSpeed);
     } else {
-      // Line break
+      // Add line break
       terminal.appendChild(document.createElement("br"));
       i++; 
       j = 0;
-      
-      // Random pause between lines (200ms to 600ms)
+
+      // Longer randomized pause (200ms - 600ms) between lines
       const linePause = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
       setTimeout(typeLine, linePause);
     }
   }
 }
 
+// Set up the intersection observer to trigger when the terminal is visible
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !started) {
       started = true;
       typeLine();
-      observer.disconnect(); // Stop observing once it starts
+      observer.disconnect(); // Efficiently stop watching once animation starts
     }
   });
-}, { threshold: 0.5 }); // Trigger when 50% visible
+}, { threshold: 0.5 }); // Trigger when 50% of the element is on screen
 
 observer.observe(terminal);
 </script>
