@@ -337,11 +337,28 @@ Fox Hackerz builds practical, performance-driven cybersecurity tools focused on 
 const terminal = document.getElementById("terminal");
 
 const lines = [
-  "$ foxscan example.com",
-  "> scanning ports...",
-  "> detecting services...",
-  "> analyzing headers...",
-  "> vulnerabilities flagged"
+  "  _____ _____  ______   ____    _    _   _ ",
+  " |  ___/ _ \\ \\/ / ___| / ___|  / \\  | \\ | |",
+  " | |_ | | | \\  /\\___ \\| |     / _ \\ |  \\| |",
+  " |  _|| |_| /  \\ ___) | |___ / ___ \\| |\\  |",
+  " |_|   \\___/_/\\_\\____/ \\____/_/   \\_\\_| \\_|",
+  "                                           ",
+  "        FoxScan v2.0 - Recon Tool",
+  "",
+  "$ python3 foxscan.py example.com",
+  "[+] Starting Port Scan on: example.com",
+  "example.com:80 -> open (Apache httpd)",
+  "example.com:443 -> open (nginx)",
+  "",
+  "[*] Checking Headers: http://example.com",
+  "Content-Type: text/html; charset=UTF-8",
+  "Server: Apache/2.4.41 (Ubuntu)",
+  "X-Powered-By: PHP/7.4.3",
+  "",
+  "[!] Potential Issues:",
+  " - Missing X-Frame-Options (Clickjacking risk)",
+  " - Missing X-Content-Type-Options",
+  " - Server disclosed: Apache/2.4.41 (Ubuntu)"
 ];
 
 let i = 0, j = 0, started = false;
@@ -349,36 +366,36 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      // Use append for better performance and to keep the cursor at the end
       terminal.append(lines[i][j]);
       j++;
-
-      // Randomized speed between 15ms and 80ms for organic feel
-      const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
+      // Fast typing for the banner and headers
+      const charSpeed = i < 7 ? 5 : Math.floor(Math.random() * (60 - 15 + 1)) + 15;
       setTimeout(typeLine, charSpeed);
     } else {
-      // Add line break
       terminal.appendChild(document.createElement("br"));
       i++; 
       j = 0;
-
-      // Longer randomized pause (200ms - 600ms) between lines
-      const linePause = Math.floor(Math.random() * (600 - 200 + 1)) + 200;
-      setTimeout(typeLine, linePause);
+      
+      // Simulate "processing" pauses after specific steps
+      let pause = 150;
+      if (lines[i-1].includes("Starting Port Scan")) pause = 800;
+      if (lines[i-1].includes("Checking Headers")) pause = 600;
+      if (lines[i-1].includes("Issues")) pause = 400;
+      
+      setTimeout(typeLine, pause);
     }
   }
 }
 
-// Set up the intersection observer to trigger when the terminal is visible
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !started) {
       started = true;
       typeLine();
-      observer.disconnect(); // Efficiently stop watching once animation starts
+      observer.disconnect();
     }
   });
-}, { threshold: 0.5 }); // Trigger when 50% of the element is on screen
+}, { threshold: 0.5 });
 
 observer.observe(terminal);
 </script>
