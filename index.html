@@ -107,6 +107,7 @@ a { color: #58a6ff; text-decoration: none; }
   overflow: hidden;
   transition: 0.25s;
   background: #0d1117;
+  width: 100%;
 }
 
 .project-card:hover {
@@ -116,8 +117,8 @@ a { color: #58a6ff; text-decoration: none; }
 
 .project-card img {
   width: 100%;
-  height: auto;       /* ✅ natural height */
-  display: block;     /* ✅ removes spacing bugs */
+  height: auto;      /* ✅ FIXED */
+  display: block;    /* ✅ FIXED */
 }
 
 /* OVERLAY */
@@ -309,11 +310,11 @@ let i = 0, j = 0, started = false;
 function typeLine() {
   if (i < lines.length) {
     if (j < lines[i].length) {
-      terminal.innerHTML += lines[i][j]; // ✅ use ONLY innerHTML
+      terminal.innerHTML += lines[i][j]; // ✅ FIXED
       j++;
       setTimeout(typeLine, 25);
     } else {
-      terminal.innerHTML += "<br>"; // ✅ newline works now
+      terminal.innerHTML += "<br>"; // ✅ FIXED
       i++; j = 0;
       setTimeout(typeLine, 200);
     }
