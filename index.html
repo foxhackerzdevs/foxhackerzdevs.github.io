@@ -279,64 +279,63 @@ const lines = [
 ];
 
 let i = 0, j = 0;
+let started = false; // prevents duplicate runs
 
 function typeLine() {
   const terminal = document.getElementById("terminal");
-  
+
   if (i < lines.length) {
     if (j < lines[i].length) {
       terminal.append(lines[i][j]);
       j++;
-      
-      // Random delay between 15ms and 80ms for a "human" feel
+
       const charSpeed = Math.floor(Math.random() * (80 - 15 + 1)) + 15;
       setTimeout(typeLine, charSpeed);
-      
+
     } else {
       terminal.appendChild(document.createElement("br"));
       i++;
       j = 0;
-      
-      // Slightly longer pause between full lines (200ms to 500ms)
+
       const linePause = Math.floor(Math.random() * (500 - 200 + 1)) + 200;
       setTimeout(typeLine, linePause);
     }
   }
 }
 
-// Initialize the trigger
-scrollTrigger("#terminal", {
-  cb: (el) => {
-    typeLine(); // Starts the animation when #terminal is visible
-  },
-  threshold: 0.5 // Adjust this (0.1 to 1.0) to control when it starts
-});
-
-// Fixed version of your scrollTrigger helper
+// Scroll trigger (fixed)
 function scrollTrigger(selector, options = {}) {
-    let els = Array.from(document.querySelectorAll(selector));
-    els.forEach((el) => {
-        addObserver(el, options);
-    });
+  let els = Array.from(document.querySelectorAll(selector));
+  els.forEach((el) => addObserver(el, options));
 }
 
 function addObserver(el, options) {
-    if (!("IntersectionObserver" in window)) {
-        if (options.cb) options.cb(el);
-        else el.classList.add("active"); // Fixed: changed entry.target to el
-        return;
-    }
-    let observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                if (options.cb) options.cb(el);
-                else entry.target.classList.add("active");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-    observer.observe(el);
+  if (!("IntersectionObserver" in window)) {
+    options.cb && options.cb(el);
+    return;
+  }
+
+  let observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        if (!started) {
+          started = true;
+          options.cb && options.cb(el);
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.5 // ✅ correctly placed
+  });
+
+  observer.observe(el);
 }
+
+// INIT
+scrollTrigger("#terminal", {
+  cb: () => typeLine()
+});
 </script>
 
 </body>
