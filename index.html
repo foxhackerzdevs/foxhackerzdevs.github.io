@@ -125,7 +125,7 @@ a { color: #58a6ff; text-decoration: none; }
 /* PROJECTS GRID - Ensure enough spacing for reveal */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 20px;
   perspective: 1000px; /* Adds depth to the reveal */
 }
@@ -165,6 +165,7 @@ a { color: #58a6ff; text-decoration: none; }
 
 .project-card img {
   width: 100%;
+  height: auto;
   display: block;
   transition: transform 0.3s ease;
 }
