@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Fox Hackerz | Cybersecurity Team Portfolio</title>
+<title>Fox Hackerz | Build. Break. Secure.</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools, automation systems, and developer-focused utilities.">
+<meta name="description" content="Fox Hackerz builds high-performance cybersecurity tools like FoxPipe, Packet Auditor, and fox-vault. Python, cryptography, networking.">
 
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616494.png">
 
@@ -138,14 +138,14 @@ a { color: #58a6ff; text-decoration: none; }
   background: #0d1117;
   display: block;
   isolation: isolate;
-  
+
   /* REVEAL INITIAL STATE */
   opacity: 0;
   transform: translateY(30px);
   /* Combine transitions: one for the scroll reveal, one for the hover effect */
-  transition: 
-    opacity 0.6s ease-out, 
-    transform 0.6s ease-out, 
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out,
     box-shadow 0.25s ease;
 }
 
@@ -198,21 +198,21 @@ a { color: #58a6ff; text-decoration: none; }
   pointer-events: none;
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover.project-overlay {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* MOBILE FIX */
 @media (hover: none) {
-  .project-overlay {
+ .project-overlay {
     position: static;
     opacity: 1;
     transform: none;
     background: transparent;
     padding: 10px;
   }
-  .project-card {
+ .project-card {
     opacity: 1; /* Fallback for older browsers or if JS fails */
     transform: none;
   }
@@ -351,11 +351,11 @@ a { color: #58a6ff; text-decoration: none; }
 
 /* MOBILE OPTIMIZATION */
 @media (max-width: 600px) {
-  .terminal {
+ .terminal {
     font-size: 11px;
     padding: 12px;
   }
-  .terminal-header {
+ .terminal-header {
     padding: 8px 12px;
   }
 }
@@ -410,7 +410,7 @@ a { color: #58a6ff; text-decoration: none; }
 
 <h2>About</h2>
 <p>
-Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact. 
+Fox Hackerz builds practical, performance-driven cybersecurity tools focused on real-world impact.
 We prioritize clarity over complexity and security over convenience shortcuts.
 </p>
 
@@ -429,7 +429,11 @@ We prioritize clarity over complexity and security over convenience shortcuts.
 <h3>⭐ Featured Project</h3>
 
 <a class="project-card featured" href="https://github.com/foxhackerzdevs/FoxPipe" target="_blank">
-  <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxPipe&theme=dark" alt="FoxPipe featured project card">
+  <img
+    loading="lazy"
+    src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxPipe&theme=dark"
+    alt="FoxPipe featured project card"
+  >
   <div class="project-overlay">
     ⚡ FoxPipe — Secure, end-to-end encrypted Unix pipe communication. pip install foxpipe
   </div>
@@ -438,19 +442,14 @@ We prioritize clarity over complexity and security over convenience shortcuts.
 <h2 id="projects">Projects</h2>
 
 <div class="projects">
+  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxPipe" target="_blank">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxPipe&theme=dark" alt="FoxPipe GitHub repo card">
+    <div class="project-overlay">⚡ Secure, end-to-end encrypted Unix pipe communication</div>
+  </a>
+
   <a class="project-card" href="https://github.com/foxhackerzdevs/packet-auditor" target="_blank">
     <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=packet-auditor&theme=dark" alt="Packet Auditor GitHub repo card">
     <div class="project-overlay">📡 Real-time packet monitor. tcpdump for humans.</div>
-  </a>
-
-  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark" alt="FoxScan GitHub repo card">
-    <div class="project-overlay">⚡ Port scanning + header intelligence</div>
-  </a>
-
-  <a class="project-card" href="https://github.com/foxhackerzdevs/Cryptify" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=Cryptify&theme=dark" alt="Cryptify GitHub repo card">
-    <div class="project-overlay">🔐 Encryption + system security</div>
   </a>
 
   <a class="project-card" href="https://github.com/foxhackerzdevs/fox-vault" target="_blank">
@@ -458,14 +457,19 @@ We prioritize clarity over complexity and security over convenience shortcuts.
     <div class="project-overlay">🔐 Minimalist CLI for file encryption using XChaCha20-Poly1305 and Argon2id</div>
   </a>
 
-  <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
-    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark" alt="pinlock-img GitHub repo card">
-    <div class="project-overlay">🛡 Secure image vault</div>
-  </a>
-
   <a class="project-card" href="https://github.com/foxhackerzdevs/sshm" target="_blank">
     <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=sshm&theme=dark" alt="sshm GitHub repo card">
     <div class="project-overlay">⚡ SSH workflow automation</div>
+  </a>
+
+  <a class="project-card" href="https://github.com/foxhackerzdevs/FoxScan" target="_blank">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=FoxScan&theme=dark" alt="FoxScan GitHub repo card">
+    <div class="project-overlay">⚡ Port scanning + header intelligence</div>
+  </a>
+
+  <a class="project-card" href="https://github.com/foxhackerzdevs/pinlock-img" target="_blank">
+    <img loading="lazy" src="https://github-readme-stats-fast.vercel.app/api/pin/?username=foxhackerzdevs&repo=pinlock-img&theme=dark" alt="pinlock-img GitHub repo card">
+    <div class="project-overlay">🛡 Secure image vault</div>
   </a>
 </div>
 
@@ -496,7 +500,8 @@ We prioritize clarity over complexity and security over convenience shortcuts.
 <h2 id="contact">Contact</h2>
 <p>
 📧 foxhackerzdevs@gmail.com<br>
-🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a>
+🔗 <a href="https://github.com/foxhackerzdevs" target="_blank">Team GitHub</a><br>
+📦 <a href="https://pypi.org/user/abhrankan/" target="_blank">PyPI</a>
 </p>
 
 <div class="footer">
@@ -512,13 +517,13 @@ const reRunBtn = document.getElementById("reRunBtn");
 
 const lines = [
   "fox@hackerz:~$ python3 foxscan.py example.com", // Match the prompt here
-  "  _____ _____  ______   ____    _    _   _ ",
-  " |  ___/ _ \\ \\/ / ___| / ___|  / \\  | \\ | |",
-  " | |_ | | | \\  /\\___ \\| |     / _ \\ |  \\| |",
-  " |  _|| |_| /  \\ ___) | |___ / ___ \\| |\\  |",
-  " |_|   \\___/_/\\_\\____/ \\____/_/   \\_\\_| \\_|",
-  "                                           ",
-  "        FoxScan v2.0 - Recon Tool",
+  " _____ _____ ______ ____ _ _ _ ",
+  " | ___/ _ \\ \\/ / ___| / ___| / \\ | \\ | |",
+  " | |_ | | | \\ /\\___ \\| | / _ \\ | \\| |",
+  " | _|| |_| / \\ ___) | |___ / ___ \\| |\\ |",
+  " |_| \\___/_/\\_\\____/ \\____/_/ \\_\\_| \\_|",
+  " ",
+  " FoxScan v2.0 - Recon Tool",
   "",
   "[+] Starting Port Scan on: example.com",
   "example.com:80 -> open (Apache httpd)",
@@ -544,23 +549,23 @@ function typeLine() {
     if (j < lines[i].length) {
       terminal.textContent += lines[i][j];
       j++;
-      
+
       // Fast banner, normal typing for others
-      let charSpeed = (i > 0 && i < 8) ? 0 : Math.floor(Math.random() * (50 - 15 + 1)) + 15;
+      let charSpeed = (i > 0 && i < 8)? 0 : Math.floor(Math.random() * (50 - 15 + 1)) + 15;
       typingTimeout = setTimeout(typeLine, charSpeed);
     } else {
       // Don't add a line break after the very last prompt line
       if (i < lines.length - 1) {
         terminal.textContent += "\n";
       }
-      i++; 
+      i++;
       j = 0;
-      
+
       let pause = 100;
       if (i === 1) pause = 500; // Pause after command
       if (i === 8) pause = 600; // Pause after banner
       if (i === lines.length - 1) pause = 800; // Pause before final prompt
-      
+
       typingTimeout = setTimeout(typeLine, pause);
     }
   }
@@ -574,7 +579,7 @@ function resetTerminal() {
   }, 2000);
   clearTimeout(typingTimeout);
   terminal.textContent = "";
-  i = 0; 
+  i = 0;
   j = 0;
   started = true; // Ensure the observer doesn't try to trigger it again
   typeLine();
@@ -584,15 +589,15 @@ reRunBtn.addEventListener("click", resetTerminal);
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting && !started) {
+    if (entry.isIntersecting &&!started) {
       started = true;
-      
+
       // 1. Show the window
       terminalWindow.classList.add("visible");
-      
+
       // 2. Start typing after a short delay so the fade finishes first
-      setTimeout(typeLine, 400); 
-      
+      setTimeout(typeLine, 400);
+
       observer.disconnect();
     }
   });
@@ -608,7 +613,7 @@ const projectObserver = new IntersectionObserver((entries) => {
       projectObserver.unobserve(entry.target);
     }
   });
-}, { 
+}, {
   threshold: 0.15 // Triggers when 15% of the card is visible
 });
 
